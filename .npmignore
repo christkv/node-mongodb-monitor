@@ -1,0 +1,4 @@
+.git*
+data/
+benchmark/
+node_modules/

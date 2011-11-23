@@ -1,0 +1,23 @@
+{ "name" :            "mongodb-monitor"
+, "description" :     "A simple monitoring tool for mongodb using the rest api to record metrics of the server"
+, "keywords" :        ["mongodb", "monitoring", "commandline"]
+, "version" :         "0.0.1"
+, "author" :          "Christian Amor Kvalheim <christkv@gmail.com>"
+, "contributors" :  []
+
+, "repository" :    { "type" :  "git"
+                    , "url" :   "git@github.com:christkv/node-mongodb-monitor.git" }
+, "bugs" :          { "mail" :  "node-mongodb-native@googlegroups.com"
+                    , "url" :   "https://github.com/christkv/node-mongodb-monitor/issues" }
+, "os" :            [ "linux"
+                    , "darwin"
+                    , "freebsd" ]
+, "dependencies" :  {
+				      "optimist" : ">=0.2.8"
+					}
+, "main":             "./lib/monitor"
+, "directories" :   { "lib" : "./lib/monitor" }
+, "engines" :       { "node" : ">=0.4.0" }
+, "licenses" :    [ { "type" :  "Apache License, Version 2.0"
+                    , "url" :   "http://www.apache.org/licenses/LICENSE-2.0" } ]
+}

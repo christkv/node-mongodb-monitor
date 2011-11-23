@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+// Get all passed in options
+var argv = require('optimist').argv,
+  fs = require('fs');
+
+// Unpack all parameters
+var interval = argv['interval'] != null ? parseInt(argv['interval']) : 1000;
+var output = argv['output'] != null ? parseInt(argv['output']) : null;
+var config = argv['config'] != null ? parseInt(argv['config']) : null;
+var servers = argv['servers'] != null ? argv['servers'] : 'localhost:28017';
+var reporting = argv['reporting'] != null ? argv['reporting'] : 'numberofconnections';
+var accumulate = argv['accumulate'] != null ? argv['accumulate'] : false;
+
+// console.dir(argv)
+
+// Require the Monitor class
+var Monitor = require("../lib/monitor").Monitor;
+var monitor = null;
+
+process.on("uncaughtException", function(err) {
+  console.dir(uncaughtException)
+})
+
+// If we have a config file override all other options
+if(config != null) {
+  // Read config file
+  var configFileContent = fs.readFileSync(config);  
+  // Parse json
+  var configObject = JSON.parse(configFileContent);
+  // We want to read a config file (json format)
+  monitor = Monitor.createFromConfig(configObject)
+} else {
+  monitor = Monitor.createFromParameters(interval, output, servers, reporting, accumulate);
+}
+
+// All right start the monitor
+monitor.start(function(err, result) {
+  if(err != null) {
+    console.log("================================================================= Error");
+    console.dir(err);
+    process.exit(-1);
+  }
+});
