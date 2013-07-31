@@ -13,7 +13,7 @@
                     , "darwin"
                     , "freebsd" ]
 , "dependencies" :  {
-				      "optimist" : ">=0.2.8"
+				      "optimist" : "latest"
 					}
 , "main":             "./lib/monitor"
 , "directories" :   { "lib" : "./lib/monitor" }

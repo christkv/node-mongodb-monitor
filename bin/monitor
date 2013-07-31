@@ -19,7 +19,7 @@ var Monitor = require("../lib/monitor").Monitor;
 var monitor = null;
 
 process.on("uncaughtException", function(err) {
-  console.dir(uncaughtException)
+  console.dir(err)
 })
 
 // If we have a config file override all other options
